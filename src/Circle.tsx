@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 interface ContainerProps {
@@ -19,10 +20,12 @@ interface CircleProps {
     text?: string;
 }
 
-function Circle({bgColor, borderColor, text = 'default text'}: CircleProps) {
-    return <Container bgColor={bgColor} borderColor={borderColor ?? bgColor}>
-        {text}
-    </Container>; // borderColor가 undefined 일때 (??)
+function Circle({ bgColor, borderColor }: CircleProps) {
+    const [value, setValue] = useState<number | string>(0); // Typescript를 사용하지 않아도 default값으로 어떤 타입을 쓸건지 앎.
+    setValue(2);
+    setValue("hello");
+    setValue(true) // 에러발생
+    return <Container bgColor={bgColor} borderColor={borderColor ?? bgColor}/> // borderColor가 undefined 일때 (??)
 }
 
 export default Circle;
