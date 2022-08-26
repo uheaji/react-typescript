@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import styled from "styled-components";
 
@@ -40,7 +40,21 @@ function Coin() {
     // useParams(): url에서 관심있어하는 정보를 잡아낼 수 있게 해준다.
     const { coinId } = useParams<RouteParams>();
     const { state } = useLocation<RouteState>();
-    console.log(state.name)
+    const [info, setInfo] = useState({});
+    const [priceInfo, setPriceInfo] = useState({});
+    useEffect(() => {
+        (async () => {
+            const infoData = await (
+                await fetch(`https://api.coinpaprika.com/v1/coins/${coinId}`)
+            ).json();
+            const priceData = await(
+                await fetch(`https://api.coinpaprika.com/v1/tickers/${coinId}`)
+            ).json();
+            setInfo(infoData);
+            setPriceInfo(priceData);
+            setLoading(false);
+        })();
+    }, []);
     return (
         <Container>
             <Header>
