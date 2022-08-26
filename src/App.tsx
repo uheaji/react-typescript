@@ -60,10 +60,11 @@ const GlobalStyle = createGlobalStyle`
   }
   a{
     text-decoration: none;
+    color: inherit;
   }
 `;
 
-// fragments : DOM에 별도 노드를 추가하지 않고 자식 목록을 그룹화할 수 있습니다. (= 유령 컴포넌트)
+// Fragments : DOM에 별도 노드를 추가하지 않고 자식 목록을 그룹화할 수 있습니다. (= 유령 컴포넌트)
 function App() {
   return (
     <>
