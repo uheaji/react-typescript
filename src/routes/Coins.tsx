@@ -37,7 +37,7 @@ const Coin = styled.li`
 `;
 
 const Title = styled.h1`
-  font-size: 48px;
+  font-size: 40px;
   color: ${(props)=> props.theme.accentColor};
 `;
 
@@ -77,7 +77,7 @@ function Coins() {
   return (
     <Container>
       <Header>
-        <Title>코인</Title>
+        <Title>💰 COIN 💰</Title>
       </Header>
       {loading ? (
         <Loader>"Loading..."</Loader>
