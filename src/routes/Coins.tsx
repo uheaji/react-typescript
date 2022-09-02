@@ -23,22 +23,22 @@ const Coin = styled.li`
   color: ${(props) => props.theme.bgColor};
   margin-bottom: 10px;
   border-radius: 15px;
-  a{
+  a {
     display: flex;
     align-items: center;
     padding: 20px;
-    transition: color .2s ease-in;
+    transition: color 0.2s ease-in;
   }
   &:hover {
     a {
-      color: ${(props)=> props.theme.accentColor};
+      color: ${(props) => props.theme.accentColor};
     }
   }
 `;
 
 const Title = styled.h1`
   font-size: 40px;
-  color: ${(props)=> props.theme.accentColor};
+  color: ${(props) => props.theme.accentColor};
 `;
 
 const Loader = styled.span`
@@ -73,7 +73,7 @@ function Coins() {
       setCoins(json.slice(0, 100));
       setLoading(false);
     })();
-  }, [])
+  }, []);
   return (
     <Container>
       <Header>
@@ -86,10 +86,12 @@ function Coins() {
           {/* a.href 페이지가 새로고침이 됨 */}
           {coins.map((coin) => (
             <Coin key={coin.id}>
-              <Link to={{
-                pathname: `/${coin.id}`,
-                state: {name: coin.name},
-              }}>
+              <Link
+                to={{
+                  pathname: `/${coin.id}`,
+                  state: { name: coin.name },
+                }}
+              >
                 <Img
                   src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
                 />
